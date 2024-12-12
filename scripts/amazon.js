@@ -84,17 +84,21 @@
 // ]
 
 const showProduct = document.querySelector(".js-container");
-products.forEach((product , index)=>{
-    const productHTML = `
+products.forEach((product, index) => {
+  const productHTML = `
         <div class="product-container ">
           <div class="product-image-container">
-            <img class="product-image" src="${product.image}" alt="${product.name}">
+            <img class="product-image" src="${product.image}" alt="${
+    product.name
+  }">
           </div>
           <div class="product-name limit-text-to-2-lines">
             ${product.name}
           </div>
           <div class="product-rating-container">
-            <img class="product-rating-stars" src="images/ratings/rating-${Math.round(product.rating.stars * 10)}.png" alt="${product.rating.stars} stars">
+            <img class="product-rating-stars" src="images/ratings/rating-${Math.round(
+              product.rating.stars * 10
+            )}.png" alt="${product.rating.stars} stars">
             <div class="product-rating-count link-primary">
               ${product.rating.count}
             </div>
@@ -104,7 +108,10 @@ products.forEach((product , index)=>{
           </div>
           <div class="product-quantity-container">
             <select>
-              ${Array.from({ length: 10 }, (_, i) => `<option value="${i + 1}">${i + 1}</option>`).join('')}
+              ${Array.from(
+                { length: 10 },
+                (_, i) => `<option value="${i + 1}">${i + 1}</option>`
+              ).join("")}
             </select>
           </div>
           <div class="product-spacer"></div>
@@ -112,38 +119,40 @@ products.forEach((product , index)=>{
             <img src="images/icons/checkmark.png" alt="Added">
             Added
           </div>
-          <button class="add-to-cart-button button-primary js-cart " data-product-id="${product.id}">
+          <button class="add-to-cart-button button-primary js-cart " data-product-id="${
+            product.id
+          }">
             Add to Cart
           </button>
         </div>`;
-      
-      showProduct.insertAdjacentHTML("beforeend", productHTML);
-})
 
+  showProduct.insertAdjacentHTML("beforeend", productHTML);
+});
 
-document.querySelectorAll('.js-cart').forEach((button)=>{
-  button.addEventListener('click',()=>{
+document.querySelectorAll(".js-cart").forEach((button) => {
+  button.addEventListener("click", () => {
     //console.log(button.dataset.productName)
     const productId = button.dataset.productId;
     const item = cart.find((item) => item.productId === productId);
 
-    if(item){
-      item.quantity += 1 ;
-    }else{
-        cart.push({
-        productId : productId ,
-        quantity  : 1,
-    })
+    if (item) {
+      item.quantity += 1;
+    } else {
+      cart.push({
+        productId: productId,
+        quantity: 1,
+      });
     }
 
-    
-    cart.forEach(element => {
-    console.log(element)
-  
-});
+    let sum = 0;
+    cart.forEach((element) => {
+      console.log(element);
+      sum += element.quantity;
+    });
+    console.log(sum);
+    const showquantity = document.querySelector(".js-qunatity");
+    showquantity.innerHTML = sum;
     // console.log('click')
     // alert("adding")
-  })
-})
-
-
+  });
+});
