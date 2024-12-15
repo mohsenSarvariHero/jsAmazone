@@ -9,4 +9,10 @@ export function QuantityAll(){
   });
   console.log(sum);
   showquantity.innerHTML = sum;
+  const count = document.querySelector(".js-count");
+  if (count) {
+    count.innerHTML = sum; // Update DOM
+  } else {
+    console.error("Element with class 'js-count' not found.");
+  }
 }
