@@ -1,3 +1,7 @@
+import {cart} from "../data/cart.js"
+import {products} from "../data/products.js"
+import {AddToCart} from "../module/AddToCart.js"
+import {QuantityAll} from "../module/QuantityAll.js"
 // import products from "../data/products.js"
 // const products = [
 //     {
@@ -129,29 +133,20 @@ products.forEach((product, index) => {
   showProduct.insertAdjacentHTML("beforeend", productHTML);
 });
 
+
+
+
+
+
+
+
 document.querySelectorAll(".js-cart").forEach((button) => {
   button.addEventListener("click", () => {
     //console.log(button.dataset.productName)
+    
     const productId = button.dataset.productId;
-    const item = cart.find((item) => item.productId === productId);
-
-    if (item) {
-      item.quantity += 1;
-    } else {
-      cart.push({
-        productId: productId,
-        quantity: 1,
-      });
-    }
-
-    let sum = 0;
-    cart.forEach((element) => {
-      console.log(element);
-      sum += element.quantity;
-    });
-    console.log(sum);
-    const showquantity = document.querySelector(".js-qunatity");
-    showquantity.innerHTML = sum;
+    AddToCart(productId)
+    QuantityAll()
     // console.log('click')
     // alert("adding")
   });
