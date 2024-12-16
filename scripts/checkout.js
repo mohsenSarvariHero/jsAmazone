@@ -1,13 +1,13 @@
 import { cart } from "../data/cart.js";
 import { products } from "../data/products.js";
-
+import { formatCurrency } from "./utils/money.js";
 cart.forEach((cartItem) => {
     // Find the product that matches the productId from the cart
     const product = products.find((itemProduct) => itemProduct.id === cartItem.productId);
     console.log(product)
     // Check if product is found before proceeding
     if (product) {
-        const productPrice = product.priceCents / 100;
+        
         const showCheck = document.querySelector(".js-container");
         
         // Dynamically build the cart item HTML
@@ -25,7 +25,7 @@ cart.forEach((cartItem) => {
                             ${product.name}
                         </div>
                         <div class="product-price">
-                           $${productPrice.toFixed(2)} 
+                           $${formatCurrency(product.priceCents)} 
                         </div>
                         <div class="product-quantity">
                             <span>
