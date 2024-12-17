@@ -1,5 +1,5 @@
 import { cart } from "../data/cart.js";
-const showquantity = document.querySelector(".js-qunatity");
+let showquantity = document.querySelector(".js-qunatity");
 
 export function QuantityAll(){
   let sum = 0;
@@ -9,7 +9,7 @@ export function QuantityAll(){
   });
   console.log(sum);
   showquantity.innerHTML = sum;
-  const count = document.querySelector(".js-count");
+  let count = document.querySelector(".js-count");
   if (count) {
     count.innerHTML = sum; // Update DOM
   } else {

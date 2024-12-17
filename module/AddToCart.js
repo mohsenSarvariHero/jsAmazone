@@ -1,6 +1,6 @@
 import { cart } from "../data/cart.js";
 export function AddToCart(productId){
-  const item = cart.find((item) => item.productId === productId);
+  let item = cart.find((item) => item.productId === productId);
   if (item) {
     item.quantity += 1;
   } else {
