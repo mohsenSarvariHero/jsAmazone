@@ -1,5 +1,5 @@
 
-import { cart } from "../../data/cart.js";
+import { cart, saveStorage } from "../../data/cart.js";
 import { renderCart } from "./renderCart.js";
 export function setupDeleteButtons() {
     let deleteBtn = document.querySelectorAll(".js-delete");
@@ -16,4 +16,5 @@ export function setupDeleteButtons() {
             }
         });
     });
+    saveStorage()
 }
